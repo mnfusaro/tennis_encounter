@@ -62,10 +62,6 @@ class ProductionConfig(Config):
         f'@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}'
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-    # OpenExchange data
-    OPENEXCHANGE_URL = 'https://openexchangerates.org/api/latest.json'
-    OPENEXCHANGE_APP_ID = os.environ.get('OPENEXCHANGE_APP_ID')
     
     LOGGING_CONFIG = {
         'version': 1,
