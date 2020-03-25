@@ -90,7 +90,7 @@ class DevelopmentConfig(Config):
     # SQLAlchemy
     POSTGRES_USER = os.environ.get('POSTGRES_USER', 'postgres')
     POSTGRES_PASSWORD = os.environ.get('POSTGRES_PASSWORD', 'secret')
-    POSTGRES_HOST = os.environ.get('POSTGRES_HOST', '172.20.0.2')
+    POSTGRES_HOST = os.environ.get('POSTGRES_HOST', '127.0.0.1')
     POSTGRES_PORT = os.environ.get('POSTGRES_PORT', '5432')
     POSTGRES_DB = os.environ.get('POSTGRES_DB', 'tennis_encounter_db')
     SQLALCHEMY_DATABASE_URI = (
