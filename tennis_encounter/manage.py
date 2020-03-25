@@ -13,8 +13,12 @@ from flask_script import Manager, Command
 IMPORTANT: You must import the models in the correct order,
 otherwhise the db upgrade command will fail.
 """
-
-from extensions import db  # noqa
+from models.cities import City
+from models.states import State
+from models.locations import Location
+from models.users import User, GameLevel
+from models.user_location_association import association_table
+from extensions import db
 
 
 config = {

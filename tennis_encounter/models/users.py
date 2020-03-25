@@ -4,7 +4,7 @@ from sqlalchemy.dialects import postgresql
 from utils.db import GUID
 
 from extensions import db
-from user_location_association import UserLocationsAssociation
+from models.user_location_association import association_table
 
 
 class GameLevel(Enum):
@@ -22,14 +22,13 @@ class User(db.Model):
     id = db.Column(GUID(), primary_key=True)
     game_level = db.Column(ChoiceType(GameLevel, impl=db.Integer()))
     password = db.Column(db.LargeBinary(60), nullable=False)
-    places = db.Column(postgresql.ARRAY(db.INTEGER()))
     full_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     age = db.Column(db.SmallInteger, nullable=False)
     description = db.Column(db.Text)
     locations = db.relationship(
         "Location",
-        secondary=UserLocationsAssociation,
+        secondary=association_table,
         back_populates="users")
 
     #  card_enabled = db.Column(db.Boolean, index=True, nullable=False)

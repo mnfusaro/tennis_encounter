@@ -1,10 +1,5 @@
 from extensions import db
-from user_location_association import UserLocationsAssociation
-
-association_table = db.Table('user_location_association', db.Model.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('location_id', db.Integer, db.ForeignKey('locations.id'))
-)
+from models.user_location_association import association_table
 
 
 class Location(db.Model):
@@ -17,5 +12,5 @@ class Location(db.Model):
     state_id = db.Column(db.INTEGER(), db.ForeignKey('states.id'))
     users = db.relationship(
         "User",
-        secondary=UserLocationsAssociation,
+        secondary=association_table,
         back_populates="locations")
